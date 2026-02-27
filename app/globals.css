@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+body {
+  @apply bg-black text-white;
+}
+
+.glass {
+  @apply bg-white/10 border border-white/15 backdrop-blur-xl shadow-xl;
+}
+
+.pill {
+  @apply rounded-full px-4 py-2 bg-white/10 border border-white/15 hover:bg-white/15 transition;
+}
+.btn-primary {
+  @apply px-6 py-3 rounded-xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 text-black hover:scale-105 transition;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 rounded-xl font-bold bg-white/10 border border-white/30 hover:bg-white/20 transition;
+}
+
+/* Personnalisation de la scrollbar pour Chrome, Edge et Safari */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f15; /* Fond très sombre */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444; /* La barre elle-même */
+  border-radius: 5px;
+  border: 2px solid #0f0f15; /* Petite marge autour */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fbbf24; /* Devient jaune MyroPack au survol ! */
+}
+
+@layer base {
+  /* Supprime l'outline par défaut sur tous les éléments au clic souris */
+  /* Mais le conserve (ou le personnalise) pour la navigation au clavier */
+  :focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Optionnel : Personnalisation de l'apparence lors de la navigation réelle au clavier (Tab) */
+  :focus-visible {
+    outline: 2px solid theme('colors.yellow.400');
+    outline-offset: 2px;
+  }
+}
+
+/* Si vous utilisez des boutons avec des styles très spécifiques dans l'admin */
+.admin-button-focus-fix:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
